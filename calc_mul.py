@@ -2,26 +2,17 @@
 
 import re
                 
-def calc(A,B):
-        ai=str(A)
-        bi=str(B)
-        p = re.compile('\d+(\.\d+)?')
-        if p.match(ai) or p.match(bi):
-                a=float(ai)
-                b=float(bi)
-                if 0<a and a<b and b<1000:
-                        valid=True
-                else:
-                        valid=False
-        else:
-                valid=False
-                
-        if valid:
-                ans=a*b
-                return ans
-        else:
-                return -1
-        
+#After Modifing     
+def calc(A, B):
+    # AとBが数値（intまたはfloat）かどうかをチェック
+    if not isinstance(A, (int, float)) or not isinstance(B, (int, float)):
+        return -1
+
+    # A, B の範囲チェック（0 < A < B < 1000）
+    if 0 < A < B < 1000:
+        return round(A * B, 10)  # 浮動小数点誤差を防ぐために丸める
+    else:
+        return -1
                 
 def main ():
 	matchstring = ''
